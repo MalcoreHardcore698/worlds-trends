@@ -1,7 +1,9 @@
 // Theme toggle functionality
+import { THEME, IDS } from '../constants.js';
+
 class ThemeToggle {
   constructor() {
-    this.storageKey = 'preferred-theme';
+    this.storageKey = THEME.STORAGE_KEY;
     this.init();
   }
 
@@ -18,7 +20,9 @@ class ThemeToggle {
 
   setInitialTheme() {
     const stored = localStorage.getItem(this.storageKey);
-    const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const system = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? THEME.DARK
+      : THEME.LIGHT;
     const theme = stored || system;
 
     this.setTheme(theme);
@@ -27,16 +31,16 @@ class ThemeToggle {
   setTheme(theme) {
     const root = document.documentElement;
 
-    if (theme === 'dark') {
-      root.setAttribute('data-theme', 'dark');
-    } else if (theme === 'light') {
-      root.setAttribute('data-theme', 'light');
+    if (theme === THEME.DARK) {
+      root.setAttribute('data-theme', THEME.DARK);
+    } else if (theme === THEME.LIGHT) {
+      root.setAttribute('data-theme', THEME.LIGHT);
     } else {
       root.removeAttribute('data-theme');
     }
 
     // Store preference (null for system)
-    if (theme === 'system') {
+    if (theme === THEME.SYSTEM) {
       localStorage.removeItem(this.storageKey);
     } else {
       localStorage.setItem(this.storageKey, theme);
@@ -73,7 +77,7 @@ class ThemeToggle {
   }
 
   bindToggleButton() {
-    const button = document.getElementById('theme-toggle');
+    const button = document.getElementById(IDS.THEME_TOGGLE);
 
     if (button) {
       button.addEventListener('click', () => {
@@ -143,22 +147,22 @@ document.addEventListener('DOMContentLoaded', () => {
 // Show theme transition for smooth UX
 const style = document.createElement('style');
 style.textContent = `
-    /* Smooth theme transitions */
-    :root {
-        transition:
-            color-scheme 0.3s ease,
-            background-color 0.3s ease;
-    }
+  /* Smooth theme transitions */
+  :root {
+    transition:
+      color-scheme 0.3s ease,
+      background-color 0.3s ease;
+  }
 
-    /* Preserve animations */
-    *:where([class*="animate"], [class*="motion"]) {
-        transition: unset;
-    }
+  /* Preserve animations */
+  *:where([class*="animate"], [class*="motion"]) {
+    transition: unset;
+  }
 
-    /* Disable transitions during theme switch for instant feedback */
-    .theme-switching * {
-        transition: none !important;
-    }
+  /* Disable transitions during theme switch for instant feedback */
+  .theme-switching * {
+    transition: none !important;
+  }
 `;
 
 // Add styles to head

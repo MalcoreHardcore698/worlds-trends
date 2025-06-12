@@ -3,7 +3,7 @@
 @layer base {
   /* Custom Properties (CSS Variables) */
   :root {
-    /* Color System */
+    /* Colors */
     --color-primary-50: #eff6ff;
     --color-primary-100: #dbeafe;
     --color-primary-500: #3b82f6;
@@ -24,12 +24,17 @@
     --color-neutral-800: #1e293b;
     --color-neutral-900: #0f172a;
 
+    --color-chart-1: #c01c1f;
+    --color-chart-2: #143e95;
+
     /* Semantic Colors */
     --color-background: var(--color-neutral-50);
     --color-surface: #ededed;
     --color-text-primary: var(--color-neutral-900);
     --color-text-secondary: var(--color-neutral-600);
     --color-text-muted: var(--color-neutral-500);
+    --color-btn-background: var(--color-neutral-50);
+    --color-btn-text: var(--color-neutral-900);
     --color-border: var(--color-neutral-200);
 
     /* Typography */
@@ -37,16 +42,16 @@
       sans-serif;
     --font-family-mono: 'Fira Code', 'Consolas', 'Monaco', monospace;
 
-    --font-size-3xs: 0.5rem; /* 8px */
-    --font-size-2xs: 0.625rem; /* 10px */
-    --font-size-xs: 0.75rem; /* 12px */
-    --font-size-sm: 0.875rem; /* 14px */
-    --font-size-base: 1rem; /* 16px */
-    --font-size-lg: 1.125rem; /* 18px */
-    --font-size-xl: 1.25rem; /* 20px */
-    --font-size-2xl: 1.5rem; /* 24px */
-    --font-size-3xl: 1.875rem; /* 30px */
-    --font-size-4xl: 2.25rem; /* 36px */
+    --font-size-3xs: 0.5rem;
+    --font-size-2xs: 0.625rem;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
 
     --font-weight-normal: 400;
     --font-weight-medium: 500;
@@ -57,18 +62,18 @@
     --line-height-normal: 1.25;
     --line-height-relaxed: 1.625;
 
-    /* Spacing System */
-    --space-1: 0.25rem; /* 4px */
-    --space-2: 0.5rem; /* 8px */
-    --space-3: 0.75rem; /* 12px */
-    --space-4: 1rem; /* 16px */
-    --space-5: 1.25rem; /* 20px */
-    --space-6: 1.5rem; /* 24px */
-    --space-8: 2rem; /* 32px */
-    --space-10: 2.5rem; /* 40px */
-    --space-12: 3rem; /* 48px */
-    --space-16: 4rem; /* 64px */
-    --space-20: 5rem; /* 80px */
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
 
     /* Border Radius */
     --radius-sm: 0.375rem;
@@ -90,6 +95,7 @@
     --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Container Sizes */
+    --container-xs: 480px;
     --container-sm: 640px;
     --container-md: 768px;
     --container-lg: 1024px;
@@ -97,7 +103,7 @@
     --container-2xl: 1536px;
   }
 
-  /* Dark theme support */
+  /* Dark theme */
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) {
       --color-background: var(--color-neutral-900);
@@ -107,6 +113,8 @@
       --color-text-primary: var(--color-neutral-50);
       --color-text-secondary: var(--color-neutral-300);
       --color-text-muted: var(--color-neutral-400);
+      --color-btn-background: black;
+      --color-btn-text: white;
       --color-border: var(--color-neutral-700);
       --color-border-hover: var(--color-neutral-600);
       --color-border-active: var(--color-neutral-500);
@@ -122,6 +130,8 @@
     --color-text-primary: var(--color-neutral-50);
     --color-text-secondary: var(--color-neutral-300);
     --color-text-muted: var(--color-neutral-400);
+    --color-btn-background: white;
+    --color-btn-text: black;
     --color-border: var(--color-neutral-700);
     --color-border-hover: var(--color-neutral-600);
     --color-border-active: var(--color-neutral-500);
@@ -130,12 +140,14 @@
   /* Force light theme */
   :root[data-theme='light'] {
     --color-background: var(--color-neutral-50);
-    --color-surface: #ffffff;
+    --color-surface: #ededed;
     --color-surface-hover: color-mix(in srgb, var(--color-neutral-900) 5%, transparent);
     --color-surface-active: color-mix(in srgb, var(--color-neutral-900) 10%, transparent);
     --color-text-primary: var(--color-neutral-900);
     --color-text-secondary: var(--color-neutral-600);
     --color-text-muted: var(--color-neutral-500);
+    --color-btn-background: black;
+    --color-btn-text: white;
     --color-border: var(--color-neutral-200);
     --color-border-hover: var(--color-neutral-300);
     --color-border-active: var(--color-neutral-300);
@@ -173,7 +185,7 @@
     color: var(--color-primary-900);
   }
 
-  /* Typography elements */
+  /* Typography */
   h1,
   h2,
   h3,
@@ -183,7 +195,7 @@
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-tight);
     color: var(--color-text-primary);
-    text-wrap: balance; /* Modern CSS feature */
+    text-wrap: balance;
   }
 
   h1 {
@@ -207,7 +219,7 @@
 
   p {
     color: var(--color-text-secondary);
-    text-wrap: pretty; /* Modern CSS feature */
+    text-wrap: pretty;
   }
 
   a {
@@ -220,7 +232,7 @@
     }
   }
 
-  /* Container system */
+  /* Container */
   .container {
     width: 100%;
     margin-inline: auto;
@@ -228,7 +240,7 @@
     max-width: min(var(--container-xl), 100% - var(--space-8));
   }
 
-  /* Header Layout */
+  /* Header */
   .header-content {
     display: flex;
     justify-content: space-between;
@@ -246,16 +258,7 @@
   /* Logo */
   .logo {
     display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-primary);
-    text-decoration: none;
-  }
-
-  .logo:hover {
-    color: var(--color-primary-600);
+    width: 120px;
   }
 
   /* Theme toggle */
@@ -311,7 +314,7 @@
     transform: translate(-50%, -50%) rotate(0deg) scale(1);
   }
 
-  /* Auto dark theme via media query */
+  /* Auto dark theme */
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme='light']) .theme-toggle-sun {
       opacity: 0;
@@ -337,7 +340,6 @@
     padding: var(--space-2) var(--space-4);
     border-radius: var(--radius-md);
     text-decoration: none;
-
     transition: color var(--transition-normal), background-color var(--transition-normal);
   }
 
@@ -351,20 +353,14 @@
     background-color: var(--color-primary-50);
   }
 
-  /* Main content area */
-  .main {
-    padding-block: var(--space-8);
-    min-height: calc(100vh - 60px);
-  }
-
-  /* Modern container queries support */
+  /* Container queries */
   @supports (container-type: inline-size) {
     .container {
       container-type: inline-size;
     }
   }
 
-  /* Reduced motion support */
+  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -376,7 +372,7 @@
     }
   }
 
-  /* Responsive design */
+  /* Media Queries */
   @media (max-width: 768px) {
     .container {
       padding-inline: var(--space-4);

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <defs>
+    <!-- Clip paths for arrows -->
+    <clipPath id="clip-arrow-right">
+      <rect width="20" height="20"/>
+    </clipPath>
+    <clipPath id="clip-arrow-left">
+      <rect width="20" height="20"/>
+    </clipPath>
+
+    <!-- Arrow Right Icon -->
+    <symbol id="icon-arrow-right" viewBox="0 0 20 20">
+      <g clip-path="url(#clip-arrow-right)">
+        <path d="M12.1084 15.1167L17.1667 10.0583L12.1084 5" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3.00002 10.0583L17.025 10.0583" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </symbol>
+
+    <!-- Arrow Left Icon (mirrored right arrow) -->
+    <symbol id="icon-arrow-left" viewBox="0 0 20 20">
+      <g clip-path="url(#clip-arrow-left)" transform="scale(-1, 1) translate(-20, 0)">
+        <path d="M12.1084 15.1167L17.1667 10.0583L12.1084 5" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3.00002 10.0583L17.025 10.0583" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
