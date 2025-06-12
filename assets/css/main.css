@@ -1,0 +1,10 @@
+/* Main CSS file - imports all layers in correct order */
+
+/* Define layer order */
+@layer reset, base, layout, components, utilities;
+
+/* Import layer-specific stylesheets */
+@import url('./base.css') layer(base);
+@import url('./layout.css') layer(layout);
+@import url('./components.css') layer(components);
+@import url('./utilities.css') layer(utilities);

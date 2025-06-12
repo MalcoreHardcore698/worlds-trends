@@ -1,0 +1,37 @@
+RewriteEngine On
+
+# Redirect all requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Set MIME types for ES6 modules
+AddType text/javascript .js
+AddType text/javascript .mjs
+
+# Enable CORS for local development
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header set Access-Control-Allow-Headers "Content-Type"
+
+# Cache Control for static assets (development-friendly)
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg)$">
+    # For development: short cache time
+    Header set Cache-Control "public, max-age=300"
+    # Alternative for production: longer cache
+    # Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>
+
+# No cache for API endpoints
+<FilesMatch "^api/">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</FilesMatch>
+
+# No cache for PHP files in development
+<FilesMatch "\.php$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</FilesMatch> 

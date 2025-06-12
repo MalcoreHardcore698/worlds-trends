@@ -1,0 +1,28 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true
+  },
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "scss", "sass"],
+  "stylelint.snippet": ["css", "scss", "sass"],
+  "prettier.requireConfig": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "files.associations": {
+    "*.css": "css"
+  },
+  "emmet.includeLanguages": {
+    "css": "css"
+  }
+} 
