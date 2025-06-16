@@ -6,10 +6,19 @@
   // Get the request URI and remove query string
   $requestUri = strtok($_SERVER['REQUEST_URI'], '?');
   $requestUri = rtrim($requestUri, '/');
+  
+  // Handle empty URI (root) as home route
+  if (empty($requestUri)) {
+    $requestUri = '/';
+  }
 
   // Simple routing
   switch ($requestUri) {
     case ROUTE_HOME:
+      // Redirect to news page
+      header('Location: /news', true, 302);
+      exit();
+      break;
     case ROUTE_NEWS:
       include 'pages/news.php';
       break;

@@ -9,11 +9,65 @@ A web application for visualizing and analyzing global trends and statistics.
 git clone https://github.com/MalcoreHardcore698/worlds-trends.git
 cd worlds-trends
 
-# Install dependencies
-php composer.phar install
-
 # Start development server
 php -S localhost:8000 router.php
+```
+
+## PHP Installation
+
+### 🖥️ macOS
+
+```bash
+# Using Homebrew (recommended)
+brew install php
+
+# Or download from official site
+# Visit: https://www.php.net/downloads.php
+```
+
+### Windows
+
+```bash
+# Using Chocolatey
+choco install php
+
+# Or download XAMPP (includes PHP, Apache, MySQL)
+# Visit: https://www.apachefriends.org/download.html
+
+# Or download PHP directly
+# Visit: https://windows.php.net/download/
+```
+
+### Linux (Ubuntu/Debian)
+
+```bash
+# Update package list
+sudo apt update
+
+# Install PHP
+sudo apt install php php-cli
+
+# For other distributions:
+# CentOS/RHEL: sudo yum install php php-cli
+# Fedora: sudo dnf install php php-cli
+# Arch: sudo pacman -S php
+```
+
+### Verify Installation
+
+```bash
+php --version
+```
+
+## Alternative Run Methods
+
+### 🐳 Using Docker (No PHP installation required)
+
+```bash
+# Build and run with Docker
+docker run -p 8000:8000 -v $(pwd):/app -w /app php:8.2-cli php -S 0.0.0.0:8000 router.php
+
+# Or create Dockerfile and use docker-compose
 ```
 
 ## Project Structure
